@@ -22,7 +22,8 @@ let o = {name:"Test Name"};
 let formLoader = new FormLoader($("#myForm"));
 formLoader.deserialize(o);
 $(function(){
-  $("#").click(function(){
+  $("#btnScrape").click(function(e){
+    e.preventDefault();
     console.log(formLoader.serialize);
   });
 })
