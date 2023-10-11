@@ -10,7 +10,7 @@ already using jQuery, may as well save some space by using this version.
 index.html
 ```
 <div id="myForm">
- <input type="text" class="form-control" name="name">
+ <input type="text" name="name">
   <button id="btnScrape">Scrape</button>
 </div>
 ```
@@ -18,13 +18,22 @@ index.html
 index.js
 ```
 import FormLoader from 'FormLoader.js';
-let o = {name:"Test Name"};
-let formLoader = new FormLoader($("#myForm"));
-formLoader.deserialize(o);
+
 $(function(){
+
+  // Populate the form
+  let o = {name:"Test Name"};
+  let formLoader = new FormLoader($("#myForm"));
+  formLoader.deserialize(o);
+
+  // Scrape the form
   $("#btnScrape").click(function(e){
     e.preventDefault();
     console.log(formLoader.serialize);
   });
 })
 ```
+
+The above code will populate the name input once the page completes loading. When you push the button it will grab
+the value of the name feild and write it to the console. This is obviously most relevant when you have a form with
+many fields.
