@@ -65,7 +65,7 @@ export default class FormLoader {
 
         // Save reference to this
         let that = this,
-            inputs = this.form.find("input"),
+            inputs = this.form.find("input, textarea, select"),
             response = {};
 
         // Iterate over the properties of the data object
