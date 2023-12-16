@@ -33,34 +33,27 @@ export default class FormLoader {
             // This is a jQuery object.
             let element = that.form.find(`[name='${index}']`);
 
-            if (element.is("input")) {
-                // Check the type of the input element
-                switch (element.attr("type")) {
-                    // If it is a checkbox, set the checked property based on the value
-                    case "checkbox":
-                        element.prop("checked", value);
-                        break;
+            // Check the type of the input element
+            switch (element.attr("type")) {
+                // If it is a checkbox, set the checked property based on the value
+                case "checkbox":
+                    element.prop("checked", value);
+                    break;
 
-                    // If it is a radio, find the option that matches the value and check it
-                    case "radio":
-                        element
-                            .filter(`[value='${value}']`)
-                            .prop("checked", true);
-                        break;
+                // If it is a radio, find the option that matches the value and check it
+                case "radio":
+                    element.filter(`[value='${value}']`).prop("checked", true);
+                    break;
 
-                    // If it is a file, create a URL from the value and set it as the src attribute
-                    case "file":
-                        element.attr("src", URL.createObjectURL(value));
-                        break;
+                // If it is a file, create a URL from the value and set it as the src attribute
+                case "file":
+                    element.attr("src", URL.createObjectURL(value));
+                    break;
 
-                    // If it is any other type, set the value property
-                    // This should handle most types of input including text and textarea
-                    default:
-                        element.val(value);
-                }
-            } else if (element.is("select")) {
-                // Handle select elements
-                element.val(value);
+                // If it is any other type, set the value property
+                // This should handle most types of input including text and textarea
+                default:
+                    element.val(value);
             }
         });
     }
