@@ -76,7 +76,7 @@ export default class FormLoader {
             switch (type) {
                 // If it is a checkbox, set the checked property based on the value
                 case "checkbox":
-                    value = v.value === "on";
+                    value = v.checked;
                     break;
 
                 case "number":
